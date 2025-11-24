@@ -31,7 +31,10 @@ func wireApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*
 	userRepo := data.NewUserRepo(dataData)
 	userUsecase := biz.NewUserUsecase(userRepo)
 	userService := service.NewThriftUserService(userUsecase)
-	thriftServer, err := server.NewThriftServer(confServer, userService)
+	giftRepo := data.NewGiftRepo(dataData)
+	giftUsecase := biz.NewGiftUsecase(giftRepo)
+	giftService := service.NewThriftGiftService(giftUsecase)
+	thriftServer, err := server.NewThriftServer(confServer, userService, giftService)
 	if err != nil {
 		cleanup()
 		return nil, nil, err

@@ -1,0 +1,2 @@
+# command-line-arguments
+cmd/aboveThrift/main.go:77:23: undefined: wireApp

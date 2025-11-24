@@ -12,6 +12,7 @@ import (
 	"github.com/go-kratos/kratos/v2/config/file"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/tracing"
+	"github.com/sirupsen/logrus"
 
 	_ "go.uber.org/automaxprocs"
 )
@@ -56,6 +57,7 @@ func main() {
 		"trace.id", tracing.TraceID(),
 		"span.id", tracing.SpanID(),
 	)
+	logrus.SetReportCaller(true)
 	c := config.New(
 		config.WithSource(
 			file.NewSource(flagconf),

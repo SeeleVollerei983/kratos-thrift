@@ -4,10 +4,8 @@
 package data
 
 import (
-	"aboveThriftRPC/internal/conf"
-
 	"github.com/google/wire"
 )
 
 // ProviderSet is data providers.
-var ProviderSet = wire.NewSet(NewData)
+var ProviderSet = wire.NewSet(NewData, NewUserRepo, NewGiftRepo)
